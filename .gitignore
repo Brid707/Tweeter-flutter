@@ -21,3 +21,7 @@ demo/src/main/resources/application-local.properties
 # OS
 .DS_Store
 Thumbs.db
+
+!demo/tweeter/build/
+!demo/tweeter/build/web/
+!demo/tweeter/build/web/**
