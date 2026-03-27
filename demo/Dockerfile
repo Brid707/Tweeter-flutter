@@ -1,13 +1,20 @@
-FROM openjdk:22-rc-oracle
+FROM maven:3.9.9-eclipse-temurin-21 AS build
+WORKDIR /app
 
-LABEL maintainer="bridmen18@outlook.com"
+COPY pom.xml .
+COPY .mvn .mvn
+COPY mvnw .
+COPY mvnw.cmd .
+COPY src src
 
-VOLUME /tmp
+RUN chmod +x mvnw
+RUN ./mvnw clean package -DskipTests
+
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 
-ARG JAR_FILE=target/demo-0.0.1-SNAPSHOT.jar
-ADD ${JAR_FILE} antlr-api.jar
-
-#RUN
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/antlr-api.jar"]
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]
