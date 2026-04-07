@@ -1,0 +1,27 @@
+# Flutter
+.dart_tool/
+.packages
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.idea/
+.vscode/
+*.iml
+
+# Spring Boot / Java
+target/
+*.class
+*.log
+*.jar
+
+# Secrets local
+demo/src/main/resources/application-local.properties
+
+# OS
+.DS_Store
+Thumbs.db
+
+!demo/tweeter/build/
+!demo/tweeter/build/web/
+!demo/tweeter/build/web/**
