@@ -7,7 +7,7 @@ import '../repositories/tweet_repository.dart';
 class TweetService implements ITweetRepository {
   static final TweetService _instance = TweetService._internal();
 
-  final String baseUrl = 'https://tweeter-api-28or.onrender.com';
+  final String baseUrl = 'https://tweeter-api-28or.onrender.com/api/tweets';
   late http.Client _httpClient;
 
   TweetService._internal() {
