@@ -26,7 +26,7 @@ class TweetService implements ITweetRepository {
   Future<List<Tweet>> fetchTweets() async {
     try {
       final response = await _httpClient.get(
-        Uri.parse('$baseUrl/tweets'),
+        Uri.parse(baseUrl),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -52,7 +52,7 @@ class TweetService implements ITweetRepository {
       }
 
       final response = await _httpClient.post(
-        Uri.parse('$baseUrl/tweets'),
+        Uri.parse(baseUrl),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -77,7 +77,7 @@ class TweetService implements ITweetRepository {
   Future<void> deleteTweet(int id) async {
     try {
       final response = await _httpClient.delete(
-        Uri.parse('$baseUrl/tweets/$id'),
+        Uri.parse('$baseUrl/$id'),
         headers: {
           'Content-Type': 'application/json',
         },
